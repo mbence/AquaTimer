@@ -1,2 +1,3 @@
-# AquaTimer
-AquaTimer - Arduino Library
+# AquaTimer - Arduino Library
+
+Timer for Aquarium controllers
