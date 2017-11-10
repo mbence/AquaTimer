@@ -1,0 +1,28 @@
+#######################################
+# Syntax Coloring Map For AquaTimer.h
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+AquaTimer	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+setPin	KEYWORD2
+setOn	KEYWORD2
+setOff	KEYWORD2
+setTransition	KEYWORD2
+setMoonDuration	KEYWORD2
+setMaxVal	KEYWORD2
+setMoonVal	KEYWORD2
+write	KEYWORD2
+getVal	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
