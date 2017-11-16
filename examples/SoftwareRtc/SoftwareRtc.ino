@@ -25,7 +25,6 @@
 const int LIGHTS_PIN = 6;
 
 // Software RTC based on millis() - only for testing!
-// The timer class uses this object, so the name must be exactly 'rtc'!
 RTC_Millis rtc;
 
 // The timer object, pin, ON and OFF
@@ -37,6 +36,8 @@ void setup() {
 }
 
 void loop() {  
+  // Get the current time
+  DateTime now = rtc.now();
   // write the computed value to the led pin
-  LedTimer.write();
+  LedTimer.write(now);
 }

@@ -12,16 +12,12 @@
 
 // RTClib by Adafruit: https://github.com/adafruit/RTClib
 #include <RTClib.h>
-
-// Before the include, we need to tell the library that we will use an RTC_DS1307 
-#define WITH_DS1307
 #include <AquaTimer.h>
 
 // Pin number for the led lights
 const int LED_PIN = 6;
 
 // DS1307 RTC connected via I2C and Wire lib
-// The timer class uses this object, so the name must be exactly 'rtc'!
 RTC_DS1307 rtc;
 
 // The timer object
@@ -46,6 +42,8 @@ void setup() {
 }
 
 void loop() {  
-  // Write the computed value to the led pin
-  LedTimer.write();
+  // Get the current time
+  DateTime now = rtc.now();
+  // Write the computed value to the led pin  
+  LedTimer.write(now);
 }

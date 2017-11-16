@@ -9,16 +9,7 @@
 #define AquaTimer_h
 
 #include "Arduino.h"
-#include <Wire.h>
 #include <RTClib.h>
-
-#ifdef WITH_DS1307
-extern RTC_DS1307 rtc;
-#elif defined(WITH_DS3231)
-extern RTC_DS3231 rtc;
-#else
-extern RTC_Millis rtc;
-#endif
 
 class AquaTimer {
   private:
@@ -29,14 +20,14 @@ class AquaTimer {
     int moonDuration;
     int maxVal;
     int moonVal;
-    float getSeconds();
+    long getSeconds(DateTime now);
     long t2s(int h, int m, int s = 0);
     long toTime(String str);
   public:
     AquaTimer();
     AquaTimer(int pin, String on, String off);
-    int getVal();
-    void AquaTimer::write(bool override = false);
+    int getVal(long time);
+    void AquaTimer::write(DateTime now, bool override = false);
     AquaTimer& AquaTimer::setPin(int pin);
     AquaTimer& AquaTimer::setOn(long on);
     AquaTimer& AquaTimer::setOn(String on);

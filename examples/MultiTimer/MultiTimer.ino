@@ -12,13 +12,9 @@
 
 // RTClib by Adafruit: https://github.com/adafruit/RTClib
 #include <RTClib.h>
-
-// Before the include, we need to tell the library that we will use an RTC_DS3231 
-#define WITH_DS3231
 #include <AquaTimer.h>
 
 // DS3231 RTC connected via I2C and Wire lib
-// The timer class uses this object, so the name must be exactly 'rtc'!
 RTC_DS3231 rtc;
 
 // The timer objects with the pin number, ON and OFF times
@@ -29,12 +25,18 @@ AquaTimer Carbo(8, "13:40:40", "13:40:44");
 
 void setup() {
   // Start the clock
-  rtc.begin(DateTime(F(__DATE__), F(__TIME__)));
+  rtc.begin();
+  if (rtc.lostPower()) {
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  }
+
 }
 
 void loop() {  
+  // Get the current time
+  DateTime now = rtc.now();
   // Write the computed values to the output pins
-  Micro.write();
-  Macro.write();
-  Carbo.write();
+  Micro.write(now);
+  Macro.write(now);
+  Carbo.write(now);
 }

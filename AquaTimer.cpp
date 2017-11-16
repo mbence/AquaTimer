@@ -125,9 +125,10 @@ AquaTimer& AquaTimer::setMoonVal(String moonVal)
   return *this;
 }
 
-void AquaTimer::write(bool override)
-{
-  int val = this->getVal();
+void AquaTimer::write(DateTime now, bool override)
+{  
+  long time = this->getSeconds(now); 
+  int val = this->getVal(time);
 
   if (override) {
     val = 255;
@@ -136,11 +137,9 @@ void AquaTimer::write(bool override)
   analogWrite(this->pin, val);
 }
 
-int AquaTimer::getVal()
+int AquaTimer::getVal(long time)
 {
   int val = 0;
-
-  float time = this->getSeconds();
 
   // warm up
   if (time >= this->on && time < this->on + this->transition) {
@@ -171,11 +170,8 @@ long AquaTimer::t2s(int h, int m, int s)
   return (h * 60L + m) * 60 + s;
 }
 
-float AquaTimer::getSeconds()
+long AquaTimer::getSeconds(DateTime now)
 {
-  long sec;
-  DateTime now = rtc.now();
-
   return t2s(now.hour(), now.minute(), now.second());
 }
 
