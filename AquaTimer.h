@@ -27,20 +27,20 @@ class AquaTimer {
     AquaTimer();
     AquaTimer(int pin, String on, String off);
     int getVal(long time);
-    void AquaTimer::write(DateTime now, bool override = false);
-    AquaTimer& AquaTimer::setPin(int pin);
-    AquaTimer& AquaTimer::setOn(long on);
-    AquaTimer& AquaTimer::setOn(String on);
-    AquaTimer& AquaTimer::setOff(long off);
-    AquaTimer& AquaTimer::setOff(String off);
-    AquaTimer& AquaTimer::setTransition(int transition);
-    AquaTimer& AquaTimer::setTransition(String transition);
-    AquaTimer& AquaTimer::setMoonDuration(int dur);
-    AquaTimer& AquaTimer::setMoonDuration(String dur);
-    AquaTimer& AquaTimer::setMaxVal(int maxVal);
-    AquaTimer& AquaTimer::setMaxVal(String maxVal);
-    AquaTimer& AquaTimer::setMoonVal(int moonVal);
-    AquaTimer& AquaTimer::setMoonVal(String moonVal);
+    int write(DateTime now, bool override = false);
+    AquaTimer& setPin(int pin);
+    AquaTimer& setOn(long on);
+    AquaTimer& setOn(String on);
+    AquaTimer& setOff(long off);
+    AquaTimer& setOff(String off);
+    AquaTimer& setTransition(int transition);
+    AquaTimer& setTransition(String transition);
+    AquaTimer& setMoonDuration(int dur);
+    AquaTimer& setMoonDuration(String dur);
+    AquaTimer& setMaxVal(int maxVal);
+    AquaTimer& setMaxVal(String maxVal);
+    AquaTimer& setMoonVal(int moonVal);
+    AquaTimer& setMoonVal(String moonVal);
 };
 
 #endif

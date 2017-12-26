@@ -84,13 +84,7 @@ AquaTimer& AquaTimer::setMoonDuration(String dur)
 
 AquaTimer& AquaTimer::setMaxVal(int maxVal)
 {
-  if (maxVal > 255) {
-    maxVal = 255;
-  }
-  if (maxVal < 0) {
-    maxVal = 0;
-  }
-  this->maxVal = maxVal;
+  this->maxVal = constrain(maxVal, 0, 255);;
   return *this;
 }
 
@@ -105,13 +99,7 @@ AquaTimer& AquaTimer::setMaxVal(String maxVal)
 
 AquaTimer& AquaTimer::setMoonVal(int moonVal)
 {
-  if (moonVal > 255) {
-    moonVal = 255;
-  }
-  if (moonVal < 0) {
-    moonVal = 0;
-  }
-  this->moonVal = moonVal;
+  this->moonVal = constrain(moonVal, 0, 255);
   return *this;
 }
 
@@ -125,7 +113,7 @@ AquaTimer& AquaTimer::setMoonVal(String moonVal)
   return *this;
 }
 
-void AquaTimer::write(DateTime now, bool override)
+int AquaTimer::write(DateTime now, bool override)
 {  
   long time = this->getSeconds(now); 
   int val = this->getVal(time);
@@ -135,6 +123,8 @@ void AquaTimer::write(DateTime now, bool override)
   }
 
   analogWrite(this->pin, val);
+  
+  return val;
 }
 
 int AquaTimer::getVal(long time)
